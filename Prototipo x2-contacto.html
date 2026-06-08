@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Música D'Manuel - Contacto</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Barra Superior Informativa (Blanco Humo) */
+        .top-bar {
+            background: #f5f5f5; 
+            height: 35px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        #mensaje-carrusel {
+            position: absolute;
+            white-space: nowrap;
+            color: #111; 
+            font-size: .9rem;
+            font-weight: 600;
+            left: 100%;
+        }
+
+        /* Encabezado y Navegación */
+        header {
+            background: #111;
+            position: sticky;
+            top: 0;
+            z-index: 99999;
+            box-shadow: 0 2px 10px rgba(0,0,0,.10);
+            border-bottom: 1px solid #e5dccd;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 20px;
+            height: 60px;
+            position: relative;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #d4af37;
+        }
+
+        /* Menú Desplegable */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 240px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.15);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 18px;
+            margin: 0;
+            color: #222;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .dropdown-content a:hover {
+            background: #f5f5f5;
+            color: #b68d40;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Redes Sociales del Menú */
+        .instagram-menu {
+            position: absolute;
+            right: 65px; 
+            color: #E1306C !important; 
+            font-size: 24px;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .instagram-menu:hover {
+            transform: scale(1.15);
+        }
+
+        .facebook-menu {
+            position: absolute;
+            right: 25px; 
+            color: #1877F2 !important; 
+            font-size: 24px;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .facebook-menu:hover {
+            transform: scale(1.15);
+        }
+
+        /* Sección de Contacto */
+        .contacto-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 155px);
+        }
+
+        .contacto-titulo {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #111;
+            position: relative;
+        }
+
+        .contacto-titulo::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #d4af37;
+            margin: 10px auto 0 auto;
+        }
+
+        .contacto-subtitulo {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Columna Izquierda: Info de contacto */
+        .info-contacto {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            padding-right: 20px;
+            border-right: 1px solid #eee;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .info-icon {
+            background: #fdfaf2;
+            color: #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(212,175,55,0.1);
+        }
+
+        .info-texto h3 {
+            font-size: 1.1rem;
+            color: #111;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .info-texto p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Columna Derecha: Formulario */
+        .formulario-contacto h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #111;
+        }
+
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+
+        .form-grupo label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: .3s;
+            background: #fafafa;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 14px;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn-enviar:hover {
+            background: #d4af37;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        /* Botón de WhatsApp Flotante */
+        .whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,.3);
+            z-index: 9999;
+            transition: .3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* Pie de Página */
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* Responsivo */
+        @media(max-width:992px){
+            .contacto-grid {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .info-contacto {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+        }
+
+        @media(max-width:768px){
+            .contacto-titulo {
+                font-size: 2rem;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+            .facebook-menu, .instagram-menu {
+                position: static;
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div id="mensaje-carrusel">
+            		💳 3 cuotas sin intereses con tarjetas BCP
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            
+            <div class="dropdown">
+                <a href="tienda.html">Tienda Virtual</a>
+                <div class="dropdown-content">
+                    <a href="tienda.html#guitarras">Guitarras</a>
+                    <a href="tienda.html#teclados">Teclados y Pianos</a>
+                    <a href="tienda.html#percusion">Percusión y Baterías</a>
+                </div>
+            </div>
+
+            <a href="contacto.html" class="active">Contacto</a>
+            <a href="presentacion.html">Presentación</a>
+
+            <a href="https://instagram.com" target="_blank" class="instagram-menu">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="facebook-menu">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </nav>
+    </header>
+
+    <main class="contacto-section">
+        <h1 class="contacto-titulo">Contáctanos</h1>
+        <p class="contacto-subtitulo">¿Tienes alguna duda o estás buscando un instrumento en especial? Escríbenos o visítanos, nuestro equipo está listo para ayudarte.</p>
+
+        <div class="contacto-grid">
+            <div class="info-contacto">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-texto">
+                        <h3>Ubicación</h3>
+                        <p>Lima, Perú (Atención en tienda física y almacén central)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info-texto">
+                        <h3>Teléfono / WhatsApp</h3>
+                        <p>+51 939 290 992</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-texto">
+                        <h3>Correo Electrónico</h3>
+                        <p>contacto@homemusicdmanuel.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-texto">
+                        <h3>Horario de Atención</h3>
+                        <p>Lunes a Sábado: 9:00 AM - 8:00 PM<br>Domingos: Previa cita</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formulario-contacto">
+                <h2>Envíanos un mensaje</h2>
+                <form action="#" method="POST">
+                    <div class="form-grupo">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="correo">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" class="form-control" placeholder="Ej. juan@correo.com" required>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="mensaje">¿En qué podemos ayudarte?</label>
+                        <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Escribe tu consulta aquí..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Home Música D'Manuel © 2026
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/51939290992" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const mensajes = [
+            "💳 3 cuotas sin intereses con tarjetas BCP",
+            "🚚 Envíos, cambios y devoluciones hasta 60 días",
+            "🎵 Tenemos todas las marcas: nacionales e internacionales",
+            "🎁 Suscríbete y obtén 10% de descuento en tu primera compra"
+        ];
+
+        let indice = 0;
+        const mensaje = document.getElementById("mensaje-carrusel");
+
+        function mostrarMensaje(){
+            mensaje.innerHTML = mensajes[indice];
+            mensaje.style.transition = "none";
+            mensaje.style.left = "100%";
+
+            setTimeout(() => {
+                mensaje.style.transition = "left 1s ease";
+                mensaje.style.left = "50%";
+                mensaje.style.transform = "translateX(-50%)";
+            }, 100);
+
+            setTimeout(() => {
+                mensaje.style.transition = "left 1s ease";
+                mensaje.style.left = "-100%";
+            }, 3100);
+
+            indice++;
+            if(indice >= mensajes.length){ indice = 0; }
+        }
+
+        mostrarMensaje();
+        setInterval(mostrarMensaje, 4200);
+    </script>
+</body>
+</html>
